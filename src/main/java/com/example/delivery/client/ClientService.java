@@ -4,6 +4,7 @@ import com.example.delivery.client.cart.Cart;
 import com.example.delivery.product.Product;
 import com.example.delivery.product.ProductRepository;
 import lombok.RequiredArgsConstructor;
+import org.aspectj.apache.bcel.generic.InstructionConstants;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -15,6 +16,7 @@ public class ClientService {
 
     private final ClientRepository clientRepository;
     private final ProductRepository productRepository;
+    private final ClientMapper clientMapper;
 
     public void addToCart(int clientId, int productId) {
         Client client = clientRepository.findById(clientId).orElseThrow();
@@ -26,9 +28,18 @@ public class ClientService {
         clientRepository.save(client);
     }
 
-    public Page<ClientResponseDto> getPage(int page, int size){
-        Pageable pageable = PageRequest.of(page,size);
+    public Page<ClientResponseDto> getPage(int page, int size) {
+        Pageable pageable = PageRequest.of(page, size);
         return clientRepository.findAllClients(pageable);
+    }
+
+    public ClientResponseDto getClientById(int id) {
+        return clientRepository.findClientById(id).orElseThrow();
+    }
+
+    public void create(ClientRequestDto clientRequestDto) {
+        Client client = clientMapper.toEntity(clientRequestDto);
+        clientRepository.save(client);
     }
 
 }

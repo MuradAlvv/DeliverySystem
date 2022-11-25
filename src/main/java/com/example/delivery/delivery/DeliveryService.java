@@ -49,21 +49,20 @@ public class DeliveryService {
 
         Delivery delivery = findDeliveryByCourier(courier);
         delivery.setDeliveryStatus(DeliveryStatus.DELIVERED);
-        delivery.setDeliveryTime((end - start)+"");
+        delivery.setDeliveryTime((end - start) + "");
         save(delivery);
 
         courier.setBusy(false);
         courierService.save(courier);
 
 
-
     }
 
-    public Delivery findDeliveryByCourier(Courier courier){
+    public Delivery findDeliveryByCourier(Courier courier) {
         return deliveryRepository.findDeliveryByCourier(courier).orElseThrow();
     }
 
-    public void save(Delivery delivery){
+    public void save(Delivery delivery) {
         deliveryRepository.save(delivery);
     }
 

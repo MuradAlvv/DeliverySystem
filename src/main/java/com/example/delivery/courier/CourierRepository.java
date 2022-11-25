@@ -8,6 +8,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface CourierRepository extends JpaRepository<Courier, Integer> {
@@ -20,4 +21,8 @@ public interface CourierRepository extends JpaRepository<Courier, Integer> {
     @Query("select new com.example.delivery.courier.CourierResponseDto(c.id,c.fullName,c.location.id,c.transportType,c.busy) " +
             "from Courier c")
     Page<CourierResponseDto> findCouriers(Pageable pageable);
+
+    @Query("select new com.example.delivery.courier.CourierResponseDto(c.id,c.fullName,c.location.id, " +
+            " c.transportType,c.busy) from Courier c where c.id=:id")
+    Optional<CourierResponseDto> findCourierById(int id);
 }
