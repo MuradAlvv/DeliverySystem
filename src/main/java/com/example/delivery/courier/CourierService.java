@@ -3,6 +3,9 @@ package com.example.delivery.courier;
 import com.example.delivery.address.Address;
 import com.example.delivery.city.City;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -25,6 +28,11 @@ public class CourierService {
 
     public void save(Courier courier) {
         courierRepository.save(courier);
+    }
+
+    public Page<CourierResponseDto> getPage(int page,int size){
+        Pageable pageable = PageRequest.of(page,size);
+        return courierRepository.findCouriers(pageable);
     }
 
 }
