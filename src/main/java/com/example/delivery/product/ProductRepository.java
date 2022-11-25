@@ -12,11 +12,11 @@ import java.util.Optional;
 public interface ProductRepository extends JpaRepository<Product, Integer> {
 
     @Query("select new com.example.delivery.product.ProductResponseDto(p.id,p.title,p.description, " +
-            " p.price,p.expirationDate ,p.store,p.productType) from Product p")
+            " p.price,p.expirationDate ,p.store.id,p.productType) from Product p")
     Page<ProductResponseDto> getAllProducts(Pageable pageable);
 
 
     @Query("select new com.example.delivery.product.ProductResponseDto(p.id,p.title,p.description, " +
-            " p.price,p.expirationDate,p.store,p.productType ) from Product p where p.id=:id")
+            " p.price,p.expirationDate,p.store.id,p.productType) from Product p where p.id=:id ")
     Optional<ProductResponseDto> getProductById(int id);
 }
