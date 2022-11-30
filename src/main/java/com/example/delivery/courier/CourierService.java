@@ -2,7 +2,7 @@ package com.example.delivery.courier;
 
 import com.example.delivery.address.Address;
 import com.example.delivery.city.City;
-import com.example.delivery.delivery.DeliveryService;
+import com.example.delivery.order.delivery.DeliveryService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -17,7 +17,7 @@ import java.util.Random;
 public class CourierService {
 
     private final CourierRepository courierRepository;
-    private final DeliveryService deliveryService;
+
 
     public Courier findClosestCourier(Address address) {
         City city = address.getCity();
@@ -41,9 +41,6 @@ public class CourierService {
         return courierRepository.findCourierById(id).orElseThrow();
     }
 
-    public void finishDeliver(int courierId){
-        Courier courier = courierRepository.findById(courierId).orElseThrow();
-        deliveryService.endDelivery(courier);
-    }
+
 
 }

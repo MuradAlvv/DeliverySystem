@@ -1,6 +1,6 @@
 package com.example.delivery.courier;
 
-import com.example.delivery.delivery.DeliveryService;
+import com.example.delivery.order.delivery.DeliveryService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class CourierController {
 
     private final CourierService courierService;
+    private final DeliveryService deliveryService;
 
     @GetMapping
     public Page<CourierResponseDto> getPage(@RequestParam int page, @RequestParam int size) {
@@ -29,6 +30,6 @@ public class CourierController {
 
     @PostMapping("/end/{courierId}")
     public void endDeliver(@PathVariable int courierId) {
-        courierService.finishDeliver(courierId);
+        deliveryService.finishDeliver(courierId);
     }
 }

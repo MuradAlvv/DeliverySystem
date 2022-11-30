@@ -1,9 +1,8 @@
 package com.example.delivery.order;
 
 import com.example.delivery.client.Client;
-import com.example.delivery.common.BaseIntEntity;
 import com.example.delivery.common.BaseUuidEntity;
-import com.example.delivery.delivery.Delivery;
+import com.example.delivery.order.delivery.Delivery;
 import com.example.delivery.store.Store;
 import lombok.Getter;
 import lombok.Setter;

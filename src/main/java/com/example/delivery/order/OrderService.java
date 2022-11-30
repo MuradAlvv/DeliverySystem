@@ -2,7 +2,7 @@ package com.example.delivery.order;
 
 import com.example.delivery.client.Client;
 import com.example.delivery.client.ClientRepository;
-import com.example.delivery.delivery.DeliveryService;
+import com.example.delivery.order.delivery.DeliveryService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

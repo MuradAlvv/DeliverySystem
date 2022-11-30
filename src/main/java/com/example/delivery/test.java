@@ -10,10 +10,8 @@ import com.example.delivery.client.ClientService;
 import com.example.delivery.client.cart.Cart;
 import com.example.delivery.courier.Courier;
 import com.example.delivery.courier.CourierRepository;
-import com.example.delivery.courier.CourierService;
 import com.example.delivery.courier.TransportType;
-import com.example.delivery.delivery.DeliveryService;
-import com.example.delivery.order.OrderRepository;
+import com.example.delivery.order.delivery.DeliveryService;
 import com.example.delivery.order.OrderService;
 import com.example.delivery.product.Product;
 import com.example.delivery.product.ProductRepository;
@@ -24,6 +22,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
+import java.util.ArrayList;
+import java.util.List;
 
 @Component
 @RequiredArgsConstructor
@@ -100,9 +100,14 @@ public class test {
         courierRepository.save(courier);
 
 
-        orderService.makeOrder(1);
-        Thread.sleep(15000);
-        deliveryService.endDelivery(courier);
+//        orderService.makeOrder(1);
+//        Thread.sleep(10000);
+//        deliveryService.endDelivery(courier);
+
+
+        List<Address> addressList = new ArrayList<>();
+        addressList.add(address);
+        addressList.add(address1);
 
     }
 

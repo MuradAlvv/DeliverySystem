@@ -1,4 +1,4 @@
-package com.example.delivery.delivery;
+package com.example.delivery.order.delivery;
 
 import com.example.delivery.common.BaseUuidEntity;
 import com.example.delivery.courier.Courier;

@@ -1,7 +1,6 @@
 package com.example.delivery.order;
 
 import com.example.delivery.client.Client;
-import com.example.delivery.delivery.Delivery;
 import com.example.delivery.store.Store;
 import lombok.Data;
 

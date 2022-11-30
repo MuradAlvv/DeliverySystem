@@ -1,8 +1,7 @@
-package com.example.delivery.delivery;
+package com.example.delivery.order.delivery;
 
 import com.example.delivery.courier.Courier;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;

@@ -1,7 +1,8 @@
-package com.example.delivery.delivery;
+package com.example.delivery.order.delivery;
 
 import com.example.delivery.address.Address;
 import com.example.delivery.courier.Courier;
+import com.example.delivery.courier.CourierRepository;
 import com.example.delivery.courier.CourierService;
 import com.example.delivery.courier.TransportType;
 import com.example.delivery.order.Order;
@@ -15,6 +16,8 @@ public class DeliveryService {
     private final DeliveryRepository deliveryRepository;
 
     private final CourierService courierService;
+
+    private final CourierRepository courierRepository;
     private static long start;
 
     public void beginDeliver(Order order) {
@@ -64,6 +67,11 @@ public class DeliveryService {
 
     public void save(Delivery delivery) {
         deliveryRepository.save(delivery);
+    }
+
+    public void finishDeliver(int courierId){
+        Courier courier = courierRepository.findById(courierId).orElseThrow();
+        endDelivery(courier);
     }
 
 }
